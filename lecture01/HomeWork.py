@@ -58,11 +58,11 @@ def gamma_adjust(img, gamma=1.0):
     return cv2.LUT(img, table)
 
 
-img = cv2.imread("res/lena512color.tiff")
+img = cv2.imread("../res/lena512color.tiff")
 for i in range(5):
     color_img = random_translation_color(img, -50, 50)
-    cv2.imwrite("res/random_color_lena512_" + str(i) + ".jpg", color_img)
+    cv2.imwrite("result/random_color_lena512_" + str(i) + ".jpg", color_img)
     gamma = random.uniform(0.5, 1.5)
     print(gamma)
     gamma_img = gamma_adjust(img, gamma)
-    cv2.imwrite("res/random_gamma_lena512_" + str(i) + ".jpg", gamma_img)
+    cv2.imwrite("result/random_gamma_lena512_" + str(i) + ".jpg", gamma_img)
