@@ -32,7 +32,7 @@ def random_translation_color(img, min, max):
     return cv2.merge((B, G, R))
 
 
-# img = cv2.imread("lena512color.tiff", cv2.IMREAD_COLOR)
+# img = cv2.imread("res/lena512color.tiff", cv2.IMREAD_COLOR)
 # print(img.shape)
 # new_img = random_translation_color(img, -50, 50)
 # cv2.imshow("src", img)
@@ -51,7 +51,7 @@ def gamma_adjust(img, gamma=1.0):
     return cv2.LUT(img, table)
 
 
-# img = cv2.imread("lena512color.tiff", cv2.IMREAD_COLOR)
+# img = cv2.imread("res/lena512color.tiff", cv2.IMREAD_COLOR)
 # img_yuv = cv2.cvtColor(img, cv2.COLOR_BGR2YUV)
 # img_yuv[:, :, 0] = cv2.equalizeHist(img_yuv[:, :, 0])
 # new_img = cv2.cvtColor(img_yuv, cv2.COLOR_YUV2BGR)
@@ -68,7 +68,7 @@ def gamma_adjust(img, gamma=1.0):
 # cv2.destroyAllWindows()
 
 # image crop
-# img = cv2.imread("lena512color.tiff", cv2.IMREAD_GRAYSCALE)
+# img = cv2.imread("res/lena512color.tiff", cv2.IMREAD_GRAYSCALE)
 # img_crop = img[0:400, 100:512]
 # hist = img.flatten()
 # pyplot.hist(hist,256,[0,256])
@@ -88,7 +88,7 @@ def gamma_adjust(img, gamma=1.0):
 
 
 # Similarity Transform
-# img = cv2.imread("lena512color.tiff", cv2.IMREAD_COLOR)
+# img = cv2.imread("res/lena512color.tiff", cv2.IMREAD_COLOR)
 # M = cv2.getRotationMatrix2D((img.shape[1] / 2, img.shape[0] / 2), 30, 1.0)
 # print(M)
 # img2 = cv2.warpAffine(img, M, (img.shape[1], img.shape[0]))
@@ -107,7 +107,7 @@ def getAffineM(w, h):
     return cv2.getAffineTransform(pos1, pos2)
 
 
-# img = cv2.imread("lena512color.tiff", cv2.IMREAD_COLOR)
+# img = cv2.imread("res/lena512color.tiff", cv2.IMREAD_COLOR)
 # M = getAffineM(img.shape[1], img.shape[0])
 # print(M)
 # cv2.imshow("img", img)
@@ -125,7 +125,7 @@ def getPerspectiveM(w, h):
 
 
 #
-# img = cv2.imread("lena512color.tiff", cv2.IMREAD_COLOR)
+# img = cv2.imread("res/lena512color.tiff", cv2.IMREAD_COLOR)
 # M = getPerspectiveM(img.shape[1], img.shape[0])
 # print(M)
 # cv2.imshow("img", img)
@@ -136,7 +136,7 @@ def getPerspectiveM(w, h):
 
 
 # Image Blending
-# img = cv2.imread("lena512color.tiff", cv2.IMREAD_COLOR)
+# img = cv2.imread("res/lena512color.tiff", cv2.IMREAD_COLOR)
 # M=cv2.getRotationMatrix2D((img.shape[1]/2,img.shape[0]/2),180,1.0)
 # img2=cv2.warpAffine(img,M,(img.shape[1],img.shape[0]))
 # new_img=cv2.addWeighted(img,0.9,img2,0.1,0)
@@ -145,7 +145,7 @@ def getPerspectiveM(w, h):
 # cv2.destroyAllWindows()
 
 # Bitwise Operations
-# img = cv2.imread("lena512color.tiff", cv2.IMREAD_COLOR)
+# img = cv2.imread("res/lena512color.tiff", cv2.IMREAD_COLOR)
 # img=cv2.resize(img,(1000,1000))
 # logo = cv2.imread("logo.png", cv2.IMREAD_COLOR)
 # new_logo = cv2.resize(logo, (logo.shape[1] , logo.shape[0]))
@@ -165,7 +165,7 @@ def getPerspectiveM(w, h):
 # cv2.destroyAllWindows()
 
 # Measuring Performance with OpenCV
-# img = cv2.imread("lena512color.tiff", cv2.IMREAD_COLOR)
+# img = cv2.imread("res/lena512color.tiff", cv2.IMREAD_COLOR)
 # e1 = cv2.getTickCount()
 # print(cv2.useOptimized())
 # # for i in range(5,49,2):
@@ -179,7 +179,7 @@ def getPerspectiveM(w, h):
 
 # Changing Color-space
 
-# cap = cv2.VideoCapture("video_1280x720.mp4")
+# cap = cv2.VideoCapture("res/video_1280x720.mp4")
 # while True:
 #     _, frame = cap.read()
 #     # hsv=cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
