@@ -196,3 +196,12 @@ def getPerspectiveM(w, h):
 #     if k == 27 or not _:
 #         break
 # cv2.destroyAllWindows()
+
+
+# filter image
+img=cv2.imread("../res/lena512color.tiff")
+# new_img=numpy.hstack([img,cv2.blur(img,(3,3)),cv2.blur(img,(5,5))])
+#new_img=numpy.hstack([img,cv2.bilateralFilter(img,3,21,21)])
+new_img=numpy.hstack([img,cv2.bilateralFilter(img,3,21,21)])
+cv2.imshow("blur",new_img)
+cv2.waitKey()
