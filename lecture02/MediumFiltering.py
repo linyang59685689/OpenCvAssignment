@@ -14,28 +14,19 @@ def medium_gray(img, bSize=(3, 3)):
     new_img = numpy.zeros(img.shape, numpy.uint8)
     img_width = img.shape[1]
     img_height = img.shape[0]
-
-    for i in range(img_width):
-        for j in range(img_height):
-            if i < bSize[0] // 2 or i >= img_width - bSize[0] // 2:
-                new_img[i] = img[i]
-                break
-            elif j < bSize[1] // 2 or j >= img_height - bSize[1] // 2:
-                new_img[:][j] = img[:][j]
-            else:
-                new_img[i][j] = help_sort(img, i - bSize[0] // 2, j - bSize[1] // 2,
-                                          i + bSize[0] // 2,
-                                          j + bSize[1] // 2)
+    for i in range(bSize[1] // 2):
+        new_img[i] = img[i]
+        new_img[img_width - i - 1] = img[img_width - i - 1]
+    for i in range(bSize[0] // 2):
+        new_img[:, i] = img[:, i]
+        new_img[:, img_height - i - 1] = img[:, img_height - i - 1]
+    for i in range(bSize[0] // 2, img_height - bSize[0] // 2):
+        for j in range(bSize[1] // 2, img_width - bSize[1] // 2):
+            array = img[i - bSize[1] // 2:(i + bSize[1] // 2 + 1),
+                    j - bSize[0] // 2:(j + bSize[0] // 2 + 1)].flatten()
+            a = numpy.sort(array)
+            new_img[i][j] = a[len(array) // 2]
     return new_img
-
-
-def help_sort(img, left, top, right, bottom):
-    array = []
-    for i in range(right - left + 1):
-        for j in range(bottom - top + 1):
-            array.append(img[left + i][top + j])
-    a = sorted(array)
-    return a[len(array) // 2]
 
 
 def add_salt_noise_gray(img):
