@@ -31,6 +31,7 @@ img_float=np.float32(cv2.cvtColor(img,cv2.COLOR_BGR2GRAY))
 # img2 = cv2.GaussianBlur(img, (3, 3), 7)
 # img3 = cv2.filter2D(img, -1, kernel=GaussianKernel)
 # sift = cv2.xfeatures2d.SIFT_create()
+
 cv2.imshow("img2", img)
 # cv2.imshow("img3", img3)
 cv2.waitKey(0)

@@ -1,0 +1,28 @@
+#sansac伪代码实现
+
+def sansac(
+        model_min_nums,#开始给出模拟模型最小点个数
+        all_point,#所有的数据点
+        inliers_threshold,#认为模型距离此点多大以内的距离为内点
+        threshold=0.5,#认为内点占据所有点的比例，此模型为合格模型
+        iterations=50#迭代次数限制):
+    #创建符合模型的列表
+    model=[]
+    nums=[]
+    int i=0 #迭代次数
+    while(i<iterations):
+        i++;
+        1. 随机在all_point中找出model_min_nums个点
+        2. 利用最小二乘法模拟出 符合上述点的模型M
+        3. 把所有点all_point带入模型中，根据inliers_threshold 得到 inliers个数与outliers个数
+        if 内点inliers 个数大于 threshold :
+            利用最小二乘法不断优化模型M得到最优模型M2
+            model.append(M2),并把所有点再次带入M2中，得到所有内点数量n
+            nums.append(n)
+
+    if len(model)==0: return None
+
+    找出nums中最大数的下标 index_max
+    return model[index_max]
+
+
