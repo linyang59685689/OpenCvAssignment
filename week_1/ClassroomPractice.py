@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 # @Time  : 2019/10/1 上午10:36
 # @Author: LiLinYang
-# @File  : ClassroomPractice.py
+# @File  : linear_regreesion.py
 
 import cv2
 from matplotlib import pyplot

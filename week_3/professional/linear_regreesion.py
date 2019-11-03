@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 # @Time  : 2019/10/26 下午8:32
 # @Author: LiLinYang
-# @File  : ClassroomPractice.py
+# @File  : linear_regreesion.py
 
 
 import numpy as np
@@ -50,7 +50,7 @@ def cal_step_gradient(x_list, y_list, w, b, lrw,lrb):
 
 def gen_sample_data():
     w = random.randint(0, 10) + random.random()
-    b = random.randint(0, 5) + random.random()
+    b = random.randint(0, 5) + random.random()*random.randint(-1,10)
 
     print(w, b)
 
@@ -74,12 +74,19 @@ def train(x_list, gt_y_list, batch_size, lrw,lrb ,max_iter):
         batch_x = [x_list[j] for j in batch_idxs]
         batch_y = [gt_y_list[j] for j in batch_idxs]
         w, b = cal_step_gradient(batch_x, batch_y, w, b, lrw,lrb)
-        if(i%100==0):
-            print('w:{0},b:{1}'.format(w, b))
-            print('loss is {}'.format(eval_loss(w, b, x_list, gt_y_list)))
+        if(i%10==0):
+            # print('w:{0},b:{1}'.format(w, b))
+            # print('loss is {}'.format(eval_loss(w, b, x_list, gt_y_list)))
+            plt.scatter(x_list, gt_y_list)
+            xx=[0,100]
+            yy=[]
+            yy.append(inference(w,b, xx[0]))
+            yy.append(inference(w, b, xx[1]))
+            plt.plot(xx,yy)
+            plt.show()
+            time.sleep(2)
+
 
 
 x_list, y_list = gen_sample_data()
-plt.scatter(x_list, y_list)
-plt.show()
-train(x_list, y_list, 100, 0.0001, 0.01,1000)
+train(x_list, y_list, 100, 0.0001, 0.01,100)
