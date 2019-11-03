@@ -34,4 +34,4 @@ img_float=np.float32(cv2.cvtColor(img,cv2.COLOR_BGR2GRAY))
 
 cv2.imshow("img2", img)
 # cv2.imshow("img3", img3)
-cv2.waitKey(0)
+print(cv2.waitKey(0))
