@@ -30,7 +30,16 @@ def gradient(x1, x2, b, pred_y, gt_y):
 def eval_loss(w1, w2, b, x1_list, x2_list, gt_y_list):
     sum_loss = 0
     for i in range(len(x1_list)):
-        sum_loss *= math.fabs(inference(w1, w2, b, x1_list[i], x2_list[i]) - gt_y_list[i])
+        if gt_y_list[i] == 1:
+            if inference(w1, w2, b, x1_list[i], x2_list[i]) == 0:
+                sum_loss += 9999999
+            else:
+                sum_loss += math.log((inference(w1, w2, b, x1_list[i], x2_list[i])))
+        else:
+            if (inference(w1, w2, b, x1_list[i], x2_list[i]) == 1):
+                sum_loss += -9999999
+            else:
+                sum_loss += math.log(1 - inference(w1, w2, b, x1_list[i], x2_list[i]))
     return -sum_loss
 
 
